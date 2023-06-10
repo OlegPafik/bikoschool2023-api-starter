@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
-import router from "./api"
+import routes from "./routes"
 
 const app: Express = express();
 
@@ -16,6 +16,6 @@ app.use(express.json());
 // http://expressjs.com/es/api.html#express.urlencoded
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api', router);
+app.use('/api', routes);
 
 export default app;
