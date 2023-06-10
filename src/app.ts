@@ -15,9 +15,9 @@ app.use(express.json());
 // http://expressjs.com/es/api.html#express.urlencoded
 app.use(express.urlencoded({ extended: false }));
 
-// Routes every path
+// GET /api/memes
 // http://expressjs.com/es/api.html#app.use
-app.use("/api/memes", (req: Request, res: Response) => {
+app.get("/api/memes", (req: Request, res: Response) => {
   // res.json({ data: "Ajá!" });
   res.sendStatus(200);
 });
