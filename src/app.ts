@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
 
 const app: Express = express();
+const router = express.Router();
 
 // Shows request log on terminal
 // https://github.com/expressjs/morgan
@@ -16,10 +17,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // GET /api/memes
-// http://expressjs.com/es/api.html#app.use
-app.get("/api/memes", (req, res) => {
-  // res.json({ data: "Ajá!" });
+router.get('/memes', (req, res, next) => {
   res.sendStatus(200);
-});
+})
+
+app.use('/api', router);
 
 export default app;
