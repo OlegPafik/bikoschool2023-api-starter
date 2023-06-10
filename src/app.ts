@@ -1,8 +1,8 @@
 import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
+import router from "./api"
 
 const app: Express = express();
-const router = express.Router();
 
 // Shows request log on terminal
 // https://github.com/expressjs/morgan
@@ -15,11 +15,6 @@ app.use(express.json());
 // Parses incoming requests with urlencoded payloads
 // http://expressjs.com/es/api.html#express.urlencoded
 app.use(express.urlencoded({ extended: false }));
-
-// GET /api/memes
-router.get('/memes', (req, res, next) => {
-  res.sendStatus(200);
-})
 
 app.use('/api', router);
 
