@@ -12,4 +12,9 @@ describe("GET /api/memes", () => {
     const response = await request(app).get('/api/memes')
     expect(response.body).toBeInstanceOf(Array);
   });
+
+  it("responds with an array of 50 elements", async () => {
+    const response = await request(app).get('/api/memes')
+    expect(response.body).toHaveLength(50);
+  });
 });
