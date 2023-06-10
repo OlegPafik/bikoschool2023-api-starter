@@ -1,15 +1,7 @@
 import { Router } from "express";
-import low  from 'lowdb'
-import FileSync from 'lowdb/adapters/FileSync'
-
-interface DatabaseSchema {
-  memes: Meme[]
-}
-interface Meme{}
+import db from "./database"
 
 const routes = Router();
-const adapter = new FileSync<DatabaseSchema>('./data/db.json')
-const db = low(adapter)
 
 // GET /api/memes
 routes.get('/memes', (req, res, next) => {
