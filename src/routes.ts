@@ -4,7 +4,7 @@ const routes = Router();
 
 // GET /api/memes
 routes.get('/memes', (req, res, next) => {
-  res.send({array: []});
+  res.send([]);
     res.sendStatus(200);
   })
 
