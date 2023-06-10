@@ -17,8 +17,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes every path
 // http://expressjs.com/es/api.html#app.use
-app.use("/", (req: Request, res: Response) => {
-  res.json({ data: "index!" });
-});
+// app.use("/api/memes", (req: Request, res: Response) => {
+//   res.json({ data: "Ajá!" });
+//   res.sendStatus(200);
+// });
 
 export default app;
