@@ -1,10 +1,17 @@
 import createApp from './app'
 import request from 'supertest'
 import db from "./database"
+import { Express } from "express"
 
-const app = createApp(db);
+
 
 describe("GET /api/memes", () => {
+  let app: Express;
+  // Before each test
+  beforeEach(() => {
+    app = createApp(db);
+  })
+
   it("responds with OK", async () => {
     await request(app)
       .get('/api/memes')
