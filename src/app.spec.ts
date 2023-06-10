@@ -9,10 +9,7 @@ describe("GET /api/memes", () => {
   });
 
   it("responds with an array", async () => {
-    await request(app)
-      .get('/api/memes')
-      .then((response) => {
-        expect(response.body).toBeInstanceOf(Array);
-      })
+    const response = await request(app).get('/api/memes')
+    expect(response.body).toBeInstanceOf(Array);
   });
 });
