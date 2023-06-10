@@ -7,7 +7,7 @@ import { DatabaseSchema } from "./DatabaseSchema";
 const createApp = (db: LowdbSync<DatabaseSchema>) => {
     const app: Express = express();
 
-    if (process.env.NODE_ENV === 'development'){
+    if (process.env.NODE_ENV !== "test"){
         app.use(morgan("dev"));                         // Shows request log on terminal
     }
     app.use(express.json());                            // Parses incoming requests with JSON payloads
