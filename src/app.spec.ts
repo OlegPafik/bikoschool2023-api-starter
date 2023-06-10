@@ -11,10 +11,10 @@ describe("GET /api/memes", () => {
   let app: Express;
   
   // Before each test
-  beforeEach(() => {
+  beforeEach(async () => {
     const adapter = new Memory<DatabaseSchema>("")
     const db = low(adapter)
-    db.defaults(dbData).write();
+    await db.defaults(dbData).write();
     app = createApp(db);
   })
 
