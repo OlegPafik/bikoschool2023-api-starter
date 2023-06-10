@@ -1,13 +1,21 @@
 import { Router } from "express";
+import low  from 'lowdb'
+import FileSync from 'lowdb/adapters/FileSync'
+
+interface DatabaseSchema {
+  memes: Meme[]
+}
+interface Meme{}
 
 const routes = Router();
+const adapter = new FileSync<DatabaseSchema>('./data/db.json')
+const db = low(adapter)
 
 // GET /api/memes
 routes.get('/memes', (req, res, next) => {
-  //res.send([]); https://medium.com/gist-for-js/use-of-res-json-vs-res-send-vs-res-end-in-express-b50688c0cddf
-  const array = Array(50);
-  res.json(array);
-  res.sendStatus(200);
+  const memes = db.get("memes").take(50).value();
+  console.log(memes)
+  res.status(200).json(memes);
   })
 
 export default routes;
