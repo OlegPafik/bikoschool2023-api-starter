@@ -7,4 +7,10 @@ describe("GET /api/memes", () => {
       .get('/api/memes')
       .expect(200, done);
   });
+
+  it("responds with an array", (done) => {
+    request(app)
+      .get('/api/memes')
+      .expect({ array: []}, done);
+  });
 });
