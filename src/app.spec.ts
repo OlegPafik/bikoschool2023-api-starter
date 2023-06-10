@@ -1,5 +1,8 @@
-import app from './app'
+import createApp from './app'
 import request from 'supertest'
+import db from "./database"
+
+const app = createApp(db);
 
 describe("GET /api/memes", () => {
   it("responds with OK", async () => {
