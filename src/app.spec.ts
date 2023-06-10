@@ -1,14 +1,20 @@
 import createApp from './app'
 import request from 'supertest'
-import db from "./database"
 import { Express } from "express"
-
+import dbData from "./fixtures/db.json"
+import low  from 'lowdb'
+import Memory from 'lowdb/adapters/Memory'
+import { DatabaseSchema } from './DatabaseSchema'
 
 
 describe("GET /api/memes", () => {
   let app: Express;
+  
   // Before each test
   beforeEach(() => {
+    const adapter = new Memory<DatabaseSchema>("")
+    const db = low(adapter)
+    db.defaults(dbData).write();
     app = createApp(db);
   })
 
